@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Travel Journal</string>
+
+    <string name="naviation_drawer_open">Open navigation drawer</string>
+    <string name="naviation_drawer_close">Close navigation drawer</string>
+    <string name="trip_name">Trip name</string>
+    <string name="destination">Destination</string>
+    <string name="price_eur">Price(EUR)</string>
+    <string name="edit_trip">Edit Trip</string>
+    <string name="default_text">default</string>
+
+</resources>
