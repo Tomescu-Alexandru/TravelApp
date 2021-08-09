@@ -1,19 +1,44 @@
 package com.alexandrutomescu.traveljournal;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import java.util.jar.JarEntry;
 
+@Entity(tableName = "Trip")
 public class Trip implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo
     private int imgSource;
+
+    @ColumnInfo
     private String tripName;
+
+    @ColumnInfo
     private String destination;
+
+    @ColumnInfo
     private float rating;
+
+    @ColumnInfo
     private float favorite;
+
+    @ColumnInfo
     private float price;
+
+    @ColumnInfo
     private Date startDate, endDate;
+
+    @ColumnInfo
+    @TypeConverters(Converters.class)
     private TripType tripType;
 
     public Trip(int id, int imgSource, String tripName, String destination, float rating, float favorite, float price, Date startDate, Date endDate, TripType tripType) {

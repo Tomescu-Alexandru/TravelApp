@@ -30,6 +30,18 @@ public class TripReadOnlyView extends Fragment {
 
         editButton = view.findViewById(R.id.edit_button);
 
+
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,13 +53,6 @@ public class TripReadOnlyView extends Fragment {
                 getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, tripform).commit();
             }
         });
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
 
