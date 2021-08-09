@@ -14,7 +14,8 @@ public interface TripDao {
     LiveData<List<Trip>> getAllTrips();
 
     @Insert
-    void insertAllData(Trip trip);
+    void insertTrip(Trip trip);
+
 
 
 }

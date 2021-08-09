@@ -10,8 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Database;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +27,7 @@ public class TripFragment extends Fragment implements OnTripListener {
     private RecyclerView.LayoutManager layoutManager;
     private TripAdapter tripAdapter;
     private List<Trip> trips = new ArrayList<Trip>();
+    private TripViewModel tripViewModel;
 
 
     @Nullable
@@ -32,33 +35,14 @@ public class TripFragment extends Fragment implements OnTripListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Bundle bundle = this.getArguments();
-        if (bundle.getBoolean("main")==false)
-        handleBundle(bundle);
-
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+       // tripViewModel = new TripViewModel(this).get(TripViewModel.class);
 
         recyclerView = view.findViewById(R.id.recyclerViewTrips);
 
         return view;
-    }
-
-    private void handleBundle(Bundle bundle) {
-        Trip trip = (Trip) bundle.getSerializable("trip");
-        Log.d(TAG, String.valueOf(trip.getId()));
-        if (bundle.getBoolean("add") == true) {
-            trip.setId(trips.get(trips.size() - 1).getId() + 1);
-            trips.add(trip);
-        } else {
-            Log.d(TAG, "AI AJUNS UNDE TREBUIE");
-            for (int i=0;i< trips.size();i++) {
-                Log.d(TAG, String.valueOf(trips.get(i).getId()));
-                if (trips.get(i).getId() == trip.getId()) {
-                    trips.set(i, trip);
-                    break;
-                }
-            }
-        }
     }
 
     @Override
@@ -67,20 +51,13 @@ public class TripFragment extends Fragment implements OnTripListener {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        addTrip();
+
 
         tripAdapter = new TripAdapter(trips, this);
         recyclerView.setAdapter(tripAdapter);
 
     }
 
-    void addTrip() {
-        trips.add(new Trip(1, R.drawable.bucharest, "Romania", "Bucuresti", 5, 1, 10,
-                new Date(2021, 10, 4), new Date(2021, 10, 4), TripType.CITY_BREAK));
-
-        trips.add(new Trip(2, R.drawable.ic_home, "Italia", "Roma", 5, 1, 10,
-                new Date(2021, 10, 4), new Date(2021, 10, 4), TripType.CITY_BREAK));
-    }
 
     @Override
     public void onTripListener(int position) {

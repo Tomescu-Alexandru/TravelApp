@@ -87,9 +87,10 @@ public class TripForm extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
+
         Bundle bundle = new Bundle();
-        bundle.putSerializable("trip",trip);
-        bundle.putBoolean("add",adding);
         bundle.putBoolean("main", false);
         TripFragment tripFragment= new TripFragment();
         tripFragment.setArguments(bundle);

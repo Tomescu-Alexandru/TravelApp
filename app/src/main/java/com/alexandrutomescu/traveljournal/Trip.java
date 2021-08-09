@@ -35,7 +35,12 @@ public class Trip implements Serializable {
     private float price;
 
     @ColumnInfo
-    private Date startDate, endDate;
+    @TypeConverters(Converters.class)
+    private Date startDate;
+
+    @ColumnInfo
+    @TypeConverters(Converters.class)
+    private Date endDate;
 
     @ColumnInfo
     @TypeConverters(Converters.class)
