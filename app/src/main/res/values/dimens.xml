@@ -3,5 +3,6 @@
     <dimen name="medium_dim">10dp</dimen>
     <dimen name="img_dim">200dp</dimen>
     <dimen name="text_medium_dim">20dp</dimen>
-    <dimen name="big_text">30dp</dimen>
+    <dimen name="big_text">40dp</dimen>
+    <dimen name="almost_big_text">30dp</dimen>
 </resources>
